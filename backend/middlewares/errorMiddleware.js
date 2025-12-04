@@ -1,0 +1,10 @@
+// 404 not found
+const errorMiddleware = (err, req, res, next)=>{
+  res.status(err.status || 500).json({
+    success:false,
+    status:err.status,
+    message:err.message || "Internal Server Error"
+  })
+}
+
+export default errorMiddleware;
