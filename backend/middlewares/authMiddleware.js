@@ -6,10 +6,9 @@ export const protect = async (req, res, next) => {
   try {
     let token;
 
-    if (req.header.authorization && req.header.authorization.startsWith("Bearer")) {
-      token = req.header.authorization.split(" ")[1];
+    if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
+      token = req.headers.authorization.split(" ")[1];
     }
-
     if (!token) {
       return next(createHttpError(401, "Unauthorized"))
     }
